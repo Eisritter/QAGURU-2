@@ -53,6 +53,7 @@ public class AutomationPracticeFormTests {
                 text("Some address"),
                 text("Haryana Karnal")
         );
+
         $("#closeLargeModal").click();
     }
 }
