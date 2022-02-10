@@ -8,6 +8,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.byText;
 
 
 public class AutomationPracticeFormTests {
@@ -26,15 +27,15 @@ public class AutomationPracticeFormTests {
         $("#firstName").setValue("Roma");
         $("#lastName").setValue("TestLast");
         $("#userEmail").setValue("roma@test.com");
-        $x("//*[@for='gender-radio-1']").click(); //choose male
+        $(byText("Male")).click();
         $("#userNumber").setValue("0123456789");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("April");
         $(".react-datepicker__year-select").selectOption("1997");
         $(".react-datepicker__day--022").click();
         $("#subjectsInput").setValue("Arts").pressEnter();
-        $x("//*[@for='hobbies-checkbox-3']").click(); //choose music
-        $("#uploadPicture").uploadFile(new File("src/test/data/PictureForTests.jpg"));
+        $(byText("Music")).click();
+        $("#uploadPicture").uploadFile(new File("src/test/resources/img/PictureForTests.jpg"));
         $("#currentAddress").setValue("Some address");
         $("#react-select-3-input").setValue("Haryana").pressEnter();
         $("#react-select-4-input").setValue("Karnal").pressEnter();
