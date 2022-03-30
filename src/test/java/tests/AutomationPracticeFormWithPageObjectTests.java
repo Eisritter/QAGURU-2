@@ -79,9 +79,9 @@ public class AutomationPracticeFormWithPageObjectTests {
         step("Check Hobbies " + hobbies, () -> {
             practiceFormPage.setHobbies(hobbies);
         });
-        step("Upload Picture " + fileName, () -> {
-            practiceFormPage.uploadPicture(fileName);
-        });
+//        step("Upload Picture " + fileName, () -> {
+//            practiceFormPage.uploadPicture(fileName);
+//        });
         step("Insert Current Address " + address, () -> {
             practiceFormPage.setCurrentAddress(address);
         });
@@ -118,7 +118,7 @@ public class AutomationPracticeFormWithPageObjectTests {
                 .checkForm("Date of Birth", dateOfBirthDay + " " + dateOfBirthMonth + "," + dateOfBirthYear)
                 .checkForm("Subjects", subjects)
                 .checkForm("Hobbies", hobbies)
-                .checkForm("Picture", fileName.getName())
+                //.checkForm("Picture", fileName.getName())
                 .checkForm("Address", address)
                 .checkForm("State and City", state + " " + city);
 
