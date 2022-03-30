@@ -50,8 +50,8 @@ public class AutomationPracticeFormWithPageObjectTests {
         String hobbies = "Music";
         File fileName = new File("src/test/resources/img/PictureForTests.jpg");
         String address = "Some address";
-        String state = "Haryana";
-        String city = "Karnal";
+        String state = "NCR";
+        String city = "Delhi";
 
         practiceFormPage.openPage();
         //Complete all fields on form
