@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id "io.qameta.allure" version "2.9.6" //Allure
+    id "io.qameta.allure" version "2.9.6"
 }
 
 group 'qa.guru.allure'
@@ -15,17 +15,19 @@ compileTestJava {
 }
 
 def allureVersion = "2.17.2",
-    junitVersion = "5.8.2"
+    junitVersion = "5.8.2",
+    selenideVersion = "6.3.4",
+    slf4jVersion = "1.7.32"
 
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:6.3.0',
-            'org.junit.jupiter:junit-jupiter:5.8.2',
-            'io.qameta.allure:allure-selenide:2.17.2',
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
     )
     testRuntimeOnly(
-            'org.junit.jupiter:junit-jupiter-engine:5.8.2',
-            'org.slf4j:slf4j-simple:1.7.36')
+            "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion")
 }
 
 allure {
@@ -39,7 +41,7 @@ allure {
 
     }
     report {
-        version.set("2.17.2")
+        version.set("allureVersion")
     }
 }
 
