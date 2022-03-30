@@ -123,8 +123,6 @@ public class AutomationPracticeFormWithPageObjectTests {
                 //.checkForm("Picture", fileName.getName())
                 .checkForm("Address", address)
                 .checkForm("State and City", state + " " + city);
-
-        practiceFormPage.closeModal();
     });
     }
 
