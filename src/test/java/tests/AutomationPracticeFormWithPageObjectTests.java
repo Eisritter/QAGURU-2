@@ -53,7 +53,9 @@ public class AutomationPracticeFormWithPageObjectTests {
         String state = "NCR";
         String city = "Delhi";
 
+        step("Open page", () -> {
         practiceFormPage.openPage();
+        });
         //Complete all fields on form
         step("Insert First Name " + firstName, () -> {
             practiceFormPage.setFirstName(firstName);
