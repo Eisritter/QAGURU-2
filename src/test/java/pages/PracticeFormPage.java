@@ -96,7 +96,7 @@ public class PracticeFormPage {
         return this;
     }
     public PracticeFormPage submitForm() {
-        submitButton.scrollTo().click();
+        submitButton.scrollIntoView(true).click();
         return this;
     }
     public PracticeFormPage checkForm(String fieldName, String value) {
