@@ -92,13 +92,11 @@ public class PracticeFormPage {
     public PracticeFormPage setCity (String city) {
         cityDropdown.click();
         //$(byText(city)).click();
-        $("#react-select-4-input").setValue("Delhi").pressEnter();
+        $("#react-select-4-input").scrollTo().setValue("Delhi").pressEnter();
         return this;
     }
     public PracticeFormPage submitForm() {
-        //$(byText("Submit")).scrollTo().click();
-        $(byText("Submit")).scrollIntoView(false).click();
-        //submitButton.scrollIntoView(false).click();
+        submitButton.scrollTo().click();
         return this;
     }
     public PracticeFormPage checkForm(String fieldName, String value) {
