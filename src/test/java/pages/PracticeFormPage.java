@@ -96,8 +96,7 @@ public class PracticeFormPage {
         return this;
     }
     public PracticeFormPage submitForm() {
-        $("#submit").click();
-        //submitButton.click();
+        submitButton.scrollTo().click();
         return this;
     }
     public PracticeFormPage checkForm(String fieldName, String value) {
