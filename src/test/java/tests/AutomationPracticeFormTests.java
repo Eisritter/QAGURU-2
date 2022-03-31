@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -28,6 +29,7 @@ public class AutomationPracticeFormTests {
     }
 
     @Test
+    @Disabled
     void successFillTest() {
         step("Open home page", () -> {
             open("/automation-practice-form");
