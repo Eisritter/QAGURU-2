@@ -26,7 +26,7 @@ public class AutomationPracticeFormWithPageObjectTests {
         String browserSize = System.getProperty("browserSize");
 
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "browserSize";
+        Configuration.browserSize = browserSize;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
