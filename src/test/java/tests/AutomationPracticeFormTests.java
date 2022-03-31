@@ -1,14 +1,17 @@
 package tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selectors.byText;
+import static io.qameta.allure.Allure.step;
 
 
 public class AutomationPracticeFormTests {
@@ -18,44 +21,95 @@ public class AutomationPracticeFormTests {
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = browserSize;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
     }
 
     @Test
     void successFillTest() {
-        open("/automation-practice-form");
-        $(".main-header").shouldHave(text("Practice Form"));
+        step("Open home page", () -> {
+            open("/automation-practice-form");
+            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        });
 
-        //Complete all fields on form
-        $("#firstName").setValue("Roma");
-        $("#lastName").setValue("TestLast");
-        $("#userEmail").setValue("roma@test.com");
-        $(byText("Male")).click();
-        $("#userNumber").setValue("0123456789");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("April");
-        $(".react-datepicker__year-select").selectOption("1997");
-        $(".react-datepicker__day--022").click();
-        $("#subjectsInput").setValue("Arts").pressEnter();
-        $(byText("Music")).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/img/PictureForTests.jpg"));
-        $("#currentAddress").setValue("Some address");
-        $("#react-select-3-input").setValue("Haryana").pressEnter();
-        $("#react-select-4-input").setValue("Karnal").pressEnter();
-        $("#submit").click();
+        step("Enter name", () -> {
+            $("#firstName").setValue("Roma");
+        });
 
-        //Test that all fields are correct
-        $(".table-responsive").shouldHave(
-                text("Roma TestLast"),
-                text("roma@test.com"),
-                text("Male"),
-                text("0123456789"),
-                text("22 April,1997"),
-                text("Arts"),
-                text("Music"),
-                text("PictureForTests.jpg"),
-                text("Some address"),
-                text("Haryana Karnal")
-        );
-        $("#closeLargeModal").click();
+        step("Enter lastname", () -> {
+            $("#lastName").setValue("TestLast");
+        });
+
+        step("Enter email", () -> {
+            $("#userEmail").setValue("roma@test.com");
+        });
+
+        step("Enter user number", () -> {
+            $("#userNumber").setValue("0123456789");
+        });
+
+        step("Select gender", () -> {
+            $("#gender-radio-1").doubleClick();
+        });
+
+        step("Select  birthdate", () -> {
+            $("#dateOfBirthInput").click();
+            $(".react-datepicker__month-select").selectOptionByValue("4");
+            $(".react-datepicker__year-select").selectOptionByValue("1980");
+            $(".react-datepicker__day--025").click();
+        });
+
+        step("Enter subjects", () -> {
+            $("#subjectsInput").setValue("Physics").pressEnter();
+        });
+
+        step("Enter hobbies", () -> {
+            $("[for='hobbies-checkbox-1']").click();
+        });
+
+
+        step("Enter address", () -> {
+            $("#currentAddress").setValue("Some address");
+        });
+
+        step("Select state", () -> {
+            $("#react-select-3-input").setValue("NCR").pressEnter();
+        });
+
+        step("Select city", () -> {
+            $("#react-select-4-input").setValue("Delhi").pressEnter();
+        });
+
+
+        step("submit click", () -> {
+            $("#submit").click();
+        });
+
+        step("Form check", () -> {
+            $(".table-responsive").shouldHave(text("Anton Donsk"));
+            $(".table-responsive").shouldHave(text("Alex85@mmail.com"));
+            $(".table-responsive").shouldHave(text("1234567890"));
+            $(".table-responsive").shouldHave(text("25 may,1980"));
+            $(".table-responsive").shouldHave(text("Physics"));
+            $(".table-responsive").shouldHave(text("Sports"));
+//            $(".table-responsive").shouldHave(text("ava.jpg"));
+            $(".table-responsive").shouldHave(text("Moskov"));
+            $(".table-responsive").shouldHave(text("NCR Delhi"));
+        });
+
+    }
+
+    @AfterEach
+    void addAttachments() {
+        AttachAllure.screenshotAs("Last screenshot");
+        AttachAllure.pageSource();
+        AttachAllure.browserConsoleLogs();
+        AttachAllure.addVideo();
+        closeWebDriver();
     }
 }
