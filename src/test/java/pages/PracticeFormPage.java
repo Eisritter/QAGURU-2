@@ -91,7 +91,8 @@ public class PracticeFormPage {
     }
     public PracticeFormPage setCity (String city) {
         cityDropdown.click();
-        $(byText(city)).click();
+        //$(byText(city)).click();
+        $("#react-select-4-input").setValue("Delhi").pressEnter();
         return this;
     }
     public PracticeFormPage submitForm() {
