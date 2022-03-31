@@ -6,11 +6,8 @@ import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static io.qameta.allure.Allure.step;
 
 
