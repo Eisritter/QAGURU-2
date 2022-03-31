@@ -96,7 +96,7 @@ public class PracticeFormPage {
         return this;
     }
     public PracticeFormPage submitForm() {
-        $("#submit").scrollTo().click();
+        $(byText("Submit")).scrollTo().click();
         //submitButton.click();
         return this;
     }
