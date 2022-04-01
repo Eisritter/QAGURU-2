@@ -16,11 +16,13 @@ public class AutomationPracticeFormTests {
     @BeforeAll
     static void beforeAll() {
         String browserSize = System.getProperty("browserSize");
+        String remoteBrowser = System.getProperty("remoteBrowser", "selenoid.autotests.cloud/wd/hub");
+        String remoteBrowserUser = System.getProperty("remoteBrowserUser", "user1");
+        String remoteBrowserPassword = System.getProperty("remoteBrowserPassword", "1234");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = browserSize;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
+        Configuration.remote = "https://" + remoteBrowserUser + ":" + remoteBrowserPassword + "@" + remoteBrowser;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
