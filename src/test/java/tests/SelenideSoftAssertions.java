@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -26,6 +28,8 @@ public class SelenideSoftAssertions {
 
     @Test
     void WikiSoftAssertions() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         open("/selenide/selenide");
         $("h1").shouldHave(text("selenide / selenide"));
         $("#wiki-tab").click();
