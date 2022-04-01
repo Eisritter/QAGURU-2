@@ -1,0 +1,24 @@
+BOT_TOKEN 5286205851:AAHhcl5o8y1vrxF1W-iExerox9y6EoF1Zek
+CHAT_ID -722316779
+
+// Command in many lines (\ as separator)
+curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"chat_id": "-722316779", "text": "This is a test from eisritter"}' \
+     https://api.telegram.org/bot5286205851:AAHhcl5o8y1vrxF1W-iExerox9y6EoF1Zek/sendMessage
+
+// Command in one line
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-722316779", "text": "This is a test from eisritter"}' https://api.telegram.org/bot5286205851:AAHhcl5o8y1vrxF1W-iExerox9y6EoF1Zek/sendMessage
+
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
